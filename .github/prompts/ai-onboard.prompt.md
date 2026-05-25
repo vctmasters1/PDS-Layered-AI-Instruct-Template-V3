@@ -14,7 +14,8 @@ Convert this template from a generic scaffold into a live project. Walk the user
 ## Guardrails
 
 - **Never overwrite without asking** when a placeholder is already filled in (e.g., the user re-runs `/ai-onboard` on a partially-onboarded project — diff and confirm).
-- **Never invent values.** If the user says "skip" or "I don't know yet", leave the placeholder as-is and add the file to the "still needs your input" list at the end.
+- **Never invent values.** Inference is allowed only when grounded in explicit repo/session evidence (file detection, git metadata, environment info) and must be surfaced for user confirmation.
+- If the user says "skip" or "I don't know yet", leave the placeholder as-is and add the file to the "still needs your input" list at the end.
 - **Use today's date** (the assistant's session date) for every `Last Updated` field touched, formatted `YYYY-MM-DD`.
 - Run all edits in the workspace root unless the user has explicitly opened a subdirectory.
 - Do **not** delete `.example-module/` without explicit confirmation — it is a working reference, not dead weight.
@@ -95,6 +96,7 @@ For each section:
 3. Apply `[x]` to chosen lines and fill freeform fields (version numbers, distro, etc.).
 
 Finish by updating `Last Updated` at the top of `dev-specs.md`.
+If any section remains ambiguous, explicitly prompt the user to edit/confirm `.github/dev-specs.md` before closing onboarding.
 
 ### 5. Root architecture — `.ai/instruct.md`
 
@@ -158,6 +160,7 @@ Add a new `## [0.1.0] — YYYY-MM-DD` (or `## [Unreleased]`) section to [CHANGEL
 Print a summary to the user:
 
 - **Filled in**: bulleted list of placeholders resolved, by file.
+- **Inferred and confirmed**: bulleted list of values auto-detected (especially in `.github/dev-specs.md`) and confirmed or edited by the user.
 - **Still needs your input**: any placeholders the user said "skip" on, or any TODOs left in the diagram/data-flow sections.
 - **Suggested next steps**: e.g., "run `bash .github/hooks/install-hooks.sh`", "archive `.example-module/` when ready", "fill in module rules in `[module]/.ai/instruct.md`".
 

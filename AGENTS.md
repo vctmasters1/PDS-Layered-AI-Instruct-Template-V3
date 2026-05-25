@@ -1,6 +1,7 @@
 # AGENTS.md — Entry Point for AI Coding Agents
 
 > This file is the **discovery anchor** for any AI agent or tool entering this repository. It points to the authoritative instruction system; it does **not** restate rules.
+> This repository is a **template framework**. Placeholder values in authority files are expected until onboarding fills them.
 
 ## Where the rules live
 
@@ -9,7 +10,7 @@ This project uses the **Depth-Priority Hierarchical AI-INSTRUCT V3** system. Rul
 Start here, in this order:
 
 1. [.github/copilot-instructions.md](.github/copilot-instructions.md) — META: how the layering system works (read once per session).
-2. [.github/dev-specs.md](.github/dev-specs.md) — Platform, shell, language, frameworks. Read at session start before suggesting commands or paths.
+2. [.github/dev-specs.md](.github/dev-specs.md) — Platform, shell, language, frameworks. Read at session start before suggesting commands or paths; if still template-empty, run `/ai-onboard` or ask focused follow-up questions to fill/confirm it.
 3. [.ai/index.md](.ai/index.md) — Master index of every instruction section. Jump from here to the canonical source for any topic.
 4. [.ai/instruct.md](.ai/instruct.md) — Root-level project authority.
 5. `[module]/.ai/instruct.md` — Module-level authority. Authoritative when working inside that module.
@@ -38,3 +39,4 @@ For any tool: the contract is "read the files referenced above; the deepest `.ai
 ## Adopting this template
 
 See [TEMPLATE-USAGE.md](TEMPLATE-USAGE.md) for setup steps.
+Use `/ai-onboard` to convert template placeholders into project-specific values, including `.github/dev-specs.md`.

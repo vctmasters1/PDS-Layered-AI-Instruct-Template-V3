@@ -33,6 +33,8 @@ Before suggesting commands, file paths, line endings, or tooling, **read [`.gith
 
 Do not assume the platform from the user's prompt or your environment. The contents of `dev-specs.md` are authoritative for these facts.
 
+For template-first repositories, `dev-specs.md` may still be partially unfilled during onboarding. In that case, ask to run `/ai-onboard` (or ask focused follow-up questions) so inferred values are confirmed and written before giving platform-specific guidance.
+
 ---
 
 ## The Depth-Priority Hierarchical Paradigm
@@ -91,7 +93,7 @@ AI-invocable slash commands live as `.prompt.md` files in `.github/prompts/`.
 
 ```
 .github/prompts/
-├── ai-onboard.prompt.md        ← /ai-onboard: Interactive wizard to fill in template placeholders
+├── ai-onboard.prompt.md        ← /ai-onboard: Interactive wizard to ask/infer/confirm template fields
 ├── ai-update-index.prompt.md   ← /ai-update-index: Rebuild .ai/index.md after changes
 ├── ai-archive.prompt.md        ← /ai-archive: Archive a file following the convention
 ├── ai-new-module.prompt.md     ← /ai-new-module: Scaffold a new module and register it
