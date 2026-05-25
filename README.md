@@ -7,11 +7,11 @@
 
 > Advanced starter template with **Depth-Priority Hierarchical AI Instructions** for GitHub Copilot Agents, Cursor, Codex, and Aider. Reduces AI hallucinations through per-directory scoped rules where **the deepest file always wins**.
 
-> 📋 **This is the template repository.** After you clone it, run `/ai-onboard` in Copilot Chat — an interactive wizard will replace every placeholder below (`your-project`, repo URL, copyright holder, etc.) with your real values. See [TEMPLATE-USAGE.md](TEMPLATE-USAGE.md) for the full adoption path.
+> 📋 **This is the template repository.** After you clone it, run `/ai-onboard` in Copilot Chat — an interactive wizard that asks focused questions, infers safe defaults when unambiguous, and fills template fields (`your-project`, repo URL, `dev-specs.md`, copyright holder, etc.). It then asks you to confirm or edit inferred values. See [TEMPLATE-USAGE.md](TEMPLATE-USAGE.md) for the full adoption path.
 
 ## Executive Summary (30 seconds)
 
-- **Who this is for:** teams using Copilot/Cursor/Codex/Aider who want predictable AI behavior across a real multi-folder codebase.
+- **Who this is for:** teams using Copilot/Cursor/Codex/Aider who want a template-first framework for predictable AI behavior across a real multi-folder codebase.
 - **Problem solved:** replaces one giant instruction file with scoped, per-directory rules so agents get local context and make fewer wrong edits.
 - **Why V3 matters:** depth-priority layering + onboarding prompts + validation/safety conventions makes the system easier to adopt and safer to scale.
 
@@ -109,6 +109,8 @@ flowchart LR
 ```
 
 Read the **vertical** chain (Meta → Root → Module → Code) as authority. Read the **`.ai/` cross-cutting block** as shared rules that any layer can link to without restating. Read **prompts / agents / skills / hooks / scripts** as tools that act on or audit the system.
+
+In this template repository, root authority files intentionally ship with placeholders. After adoption, your filled values become the live authority for your project instance.
 
 What you get out of the box:
 
@@ -219,7 +221,8 @@ pwsh setup.ps1            # Windows PowerShell
 
 # 3. Open in VS Code with Copilot, then in Copilot Chat:
 #       /ai-onboard
-#    (interactive wizard auto-detects defaults and fills in every placeholder)
+#    (interactive wizard asks + infers defaults, fills placeholders including
+#     .github/dev-specs.md, then asks you to confirm/edit inferred values)
 
 # 4. Add your project's start commands here once /ai-onboard is done.
 ```
@@ -232,7 +235,7 @@ pwsh setup.ps1            # Windows PowerShell
 your-project/
 ├── .github/                     ← AI tooling: instructions, prompts, agents, hooks
 │   ├── copilot-instructions.md  ← META: how the .ai/ instruction system works
-│   ├── dev-specs.md             ← Dev platform, target platform, frameworks config
+│   ├── dev-specs.md             ← Template field sheet; filled/confirmed during onboarding
 │   ├── prompts/                 ← Slash-command prompt files (`/ai-*`)
 │   ├── agents/                  ← Custom Copilot agents
 │   ├── skills/                  ← Domain knowledge skill packs
@@ -242,7 +245,7 @@ your-project/
 │   └── tmp/                     ← Ephemeral output files (gitignored except README)
 │
 ├── .ai/                         ← Global shared instruction files
-│   ├── instruct.md              ← Root-level authoritative AI instructions
+│   ├── instruct.md              ← Root authority scaffold (template fields → project authority after onboarding)
 │   ├── conventions.md           ← Naming and organization rules
 │   ├── maintenance.md           ← Archive, never-delete, never-reset-db rules
 │   ├── credentials.md           ← Credential warehousing and security rules
@@ -271,7 +274,7 @@ your-project/
 
 | Document | Description |
 |----------|-------------|
-| [.ai/instruct.md](.ai/instruct.md) | Project architecture and rules for AI |
+| [.ai/instruct.md](.ai/instruct.md) | Root authority scaffold for adopters (filled during onboarding) |
 | [.ai/index.md](.ai/index.md) | Master index of all AI instruction sections |
 | [TEMPLATE-USAGE.md](TEMPLATE-USAGE.md) | How to adapt this template to your project |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute safely and consistently |

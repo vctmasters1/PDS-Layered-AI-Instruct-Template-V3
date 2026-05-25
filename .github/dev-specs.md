@@ -1,6 +1,7 @@
 # Project Specs — Platform, Environment & Frameworks
 
 > **AI reads this file at the start of every session.**
+> In this template repository, this file starts as a template field sheet. During adoption, `/ai-onboard` should fill what it can and ask you to confirm/edit inferred values.
 > Fill it in once at project setup. Check boxes with `[x]`. Fill freeform fields where marked.
 > This prevents the AI from guessing your platform and making wrong assumptions about paths, shells, line endings, package managers, and tooling.
 

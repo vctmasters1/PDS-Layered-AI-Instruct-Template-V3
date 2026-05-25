@@ -8,6 +8,7 @@
 >
 > **Maintenance**: Update this file whenever any `.ai/instruct.md` is created, modified, or retired.
 > Run `/ai-update-index` in Copilot Chat to rebuild automatically.
+> In this template repository, some indexed files intentionally contain placeholders until `/ai-onboard` (or manual onboarding) fills project-specific values.
 
 ---
 
@@ -33,7 +34,7 @@
 | The Depth-Priority Hierarchical Paradigm | [`.github/copilot-instructions.md`](../.github/copilot-instructions.md) | How the `.ai/` hierarchy works; deeper = more authoritative |
 | Global Shared Instructions | [`.github/copilot-instructions.md`](../.github/copilot-instructions.md) | Purpose of the `.ai/` directory |
 | AI Prompt Files | [`.github/copilot-instructions.md`](../.github/copilot-instructions.md) | Slash-command prompt files in `.github/prompts/`; `/ai-` prefix convention |
-| `/ai-onboard` | [`.github/prompts/ai-onboard.prompt.md`](../.github/prompts/ai-onboard.prompt.md) | Interactive wizard that fills in every template placeholder (identity, license, dev-specs, modules) and rebuilds the index |
+| `/ai-onboard` | [`.github/prompts/ai-onboard.prompt.md`](../.github/prompts/ai-onboard.prompt.md) | Interactive wizard that asks/infers/confirm-edits template fields (identity, license, dev-specs, modules) and rebuilds the index |
 | `/ai-update-index` | [`.github/prompts/ai-update-index.prompt.md`](../.github/prompts/ai-update-index.prompt.md) | Rebuilds `.ai/index.md` from every instruction file |
 | `/ai-archive` | [`.github/prompts/ai-archive.prompt.md`](../.github/prompts/ai-archive.prompt.md) | Safely archive a file or directory using the convention |
 | `/ai-new-module` | [`.github/prompts/ai-new-module.prompt.md`](../.github/prompts/ai-new-module.prompt.md) | Scaffold a new module: `.ai/instruct.md` + `.dev-docs/index.md`, register it, rebuild index |
@@ -112,8 +113,8 @@
 
 | Section | File | Description |
 |---------|------|-------------|
-| Project Overview | [`.ai/instruct.md`](instruct.md) | What this project is and does |
-| Architecture Overview | [`.ai/instruct.md`](instruct.md) | High-level structure and tech stack |
+| Project Overview | [`.ai/instruct.md`](instruct.md) | Template root authority scaffold; describes the adopted project's purpose |
+| Architecture Overview | [`.ai/instruct.md`](instruct.md) | Template root architecture scaffold; filled during onboarding |
 | Key Directories | [`.ai/instruct.md`](instruct.md) | Directory map with links to module .ai/ instructions |
 | Global Rules Reference | [`.ai/instruct.md`](instruct.md) | Links to the canonical global rule files |
 

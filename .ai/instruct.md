@@ -1,9 +1,10 @@
-# [PROJECT_NAME] — Root AI Instructions
+# [PROJECT_NAME] — Root AI Instructions (Template Scaffold)
 
 **Scope**: Authoritative for the entire project (workspace root)
 **Last Updated**: 2026-05-25
 
-> This is the **root-level** `.ai/instruct.md`. It is authoritative for all project-wide concerns.
+> This is the **root-level** `.ai/instruct.md` template scaffold. In this template repository, placeholders are intentional.
+> After adoption, this file becomes authoritative for your project-wide concerns once `/ai-onboard` (or manual setup) fills the fields.
 > Module-level `.ai/instruct.md` files are **more authoritative** than this file when working inside those directories.
 > See `.github/copilot-instructions.md` for how the hierarchy works.
 
