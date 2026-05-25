@@ -48,6 +48,10 @@
 | Automatic Date Maintenance | [`.github/copilot-instructions.md`](../.github/copilot-instructions.md) | AI auto-fills `Last Updated` and `[PLACEHOLDER]` values when context is unambiguous |
 | Read Project Specs First | [`.github/copilot-instructions.md`](../.github/copilot-instructions.md) | AI must read `.github/dev-specs.md` at session start before suggesting commands or paths |
 | MCP Server Configuration | [`.vscode/mcp.json`](../.vscode/mcp.json) | Model Context Protocol servers that extend AI capabilities (commented templates) |
+| PR Template | [`.github/PULL_REQUEST_TEMPLATE.md`](../.github/PULL_REQUEST_TEMPLATE.md) | AI-INSTRUCT-aware PR checklist (instruction discipline, safety, credentials) |
+| Suggested GitHub Topics | [`.github/TOPICS.md`](../.github/TOPICS.md) | Recommended repo topics for discoverability |
+| Cursor Compatibility | [`.cursor/rules/project.mdc`](../.cursor/rules/project.mdc) | Pointer rule so Cursor reads the same `.ai/` hierarchy |
+| One-shot Setup Scripts | [`setup.sh`](../setup.sh) / [`setup.ps1`](../setup.ps1) | Install hooks, scaffold `.env`, run validator |
 
 ### Project Specs
 
@@ -79,6 +83,9 @@
 | Code Organization | [`.ai/conventions.md`](conventions.md) | Project-specific structure rules (fill in per project) |
 | .gitignore Decisions | [`.ai/conventions.md`](conventions.md) | What to commit vs. ignore; personal override pattern |
 | AI Enforcement | [`.ai/conventions.md`](conventions.md) | How AI handles naming and organization violations |
+| Stack-Specific Conventions (TypeScript+React) | [`.ai/stack-examples/typescript-react.md`](stack-examples/typescript-react.md) | Reference Code Organization rules for TS/React projects |
+| Stack-Specific Conventions (Python+FastAPI) | [`.ai/stack-examples/python-fastapi.md`](stack-examples/python-fastapi.md) | Reference Code Organization rules for FastAPI projects |
+| Stack-Specific Conventions (Embedded C/C++) | [`.ai/stack-examples/embedded-c.md`](stack-examples/embedded-c.md) | Reference Code Organization rules for firmware projects |
 
 ### Maintenance & Safety
 
@@ -117,6 +124,18 @@
 | Module Overview | [`.example-module/.ai/instruct.md`](../.example-module/.ai/instruct.md) | What .example-module does and its responsibilities |
 | Subdirectory Rules | [`.example-module/.ai/instruct.md`](../.example-module/.ai/instruct.md) | Rules specific to this module |
 | Global Rules Reference | [`.example-module/.ai/instruct.md`](../.example-module/.ai/instruct.md) | Cross-references to global rules |
+
+### Example Showcase: .examples/
+
+| Section | File | Description |
+|---------|------|-------------|
+| Showcase Overview | [`.examples/README.md`](../.examples/README.md) | What the filled-in examples demonstrate and how to use them |
+| Module: auth-api | [`.examples/auth-api/.ai/instruct.md`](../.examples/auth-api/.ai/instruct.md) | Express+JWT+Postgres: layering, security, testing rules |
+| Module: auth-api Before/After | [`.examples/auth-api/BEFORE-AFTER.md`](../.examples/auth-api/BEFORE-AFTER.md) | Side-by-side of AI behavior with/without module rules |
+| Module: data-layer | [`.examples/data-layer/.ai/instruct.md`](../.examples/data-layer/.ai/instruct.md) | TypeORM entity, repository, migration discipline |
+| Module: data-layer Before/After | [`.examples/data-layer/BEFORE-AFTER.md`](../.examples/data-layer/BEFORE-AFTER.md) | Side-by-side of AI behavior with/without module rules |
+| Module: ui-component | [`.examples/ui-component/.ai/instruct.md`](../.examples/ui-component/.ai/instruct.md) | React+Tailwind component library rules |
+| Module: ui-component Before/After | [`.examples/ui-component/BEFORE-AFTER.md`](../.examples/ui-component/BEFORE-AFTER.md) | Side-by-side of AI behavior with/without module rules |
 
 ---
 

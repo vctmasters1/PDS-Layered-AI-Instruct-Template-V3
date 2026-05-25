@@ -1,22 +1,59 @@
 # [PROJECT_NAME]
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Copilot Ready](https://img.shields.io/badge/Copilot-ready-blueviolet)](.github/copilot-instructions.md)
+[![AGENTS.md](https://img.shields.io/badge/AGENTS.md-discoverable-success)](AGENTS.md)
+[![Template V3](https://img.shields.io/badge/PDS_AI--INSTRUCT-V3-informational)](.github/copilot-instructions.md)
+
 > [One-sentence description of what this project does.]
+
+---
+
+## Why this template
+
+This project is built on the **Depth-Priority Hierarchical AI-INSTRUCT V3** system: per-directory `.ai/instruct.md` files where **the deepest file always wins**. Coding agents (Copilot, Codex, Cursor, Aider) get the *right* rules at the *right* scope, automatically.
+
+```mermaid
+flowchart TD
+    Meta[".github/copilot-instructions.md<br/>META: how layering works"] --> Root[".ai/instruct.md<br/>workspace-root authority"]
+    Root --> ModA["[module-a]/.ai/instruct.md<br/>module authority"]
+    Root --> ModB["[module-b]/.ai/instruct.md<br/>module authority"]
+    ModA --> SubA1["[module-a]/[sub]/.ai/instruct.md<br/>deepest wins"]
+    classDef meta fill:#eef,stroke:#88f;
+    classDef root fill:#efe,stroke:#494;
+    classDef mod fill:#fff,stroke:#aaa;
+    classDef deep fill:#fee,stroke:#c44;
+    class Meta meta;
+    class Root root;
+    class ModA,ModB mod;
+    class SubA1 deep;
+```
+
+What you get out of the box:
+
+- **Layered rules** — global rules in [`.ai/`](.ai/), module-specific overrides per directory.
+- **Slash commands** — `/ai-onboard`, `/ai-new-module`, `/ai-archive`, `/ai-update-index`, `/ai-validate`, `/ai-commit`.
+- **Custom agents & skills** — read-only exploration agent, navigation skill, room to add your own.
+- **Safety built-in** — pre-commit credential block, never-delete + archive convention, never-reset-db rule.
+- **Multi-tool ready** — Copilot, Codex (via [AGENTS.md](AGENTS.md)), Cursor (via [`.cursor/rules/`](.cursor/rules/)), Aider.
+- **Filled-in examples** — see [`.examples/`](.examples/) for `auth-api`, `data-layer`, and `ui-component` showcases with **before/after** AI behavior.
 
 ---
 
 ## Quick Start
 
 ```bash
-# 1. Clone and install
+# 1. Clone
 git clone [repo-url]
 cd [project-name]
 
-# 2. Install git hooks (credential safety checks)
-bash .github/hooks/install-hooks.sh        # or: pwsh .github/hooks/install-hooks.ps1
+# 2. One-shot setup (installs hooks, scaffolds .env, runs validator)
+bash setup.sh             # macOS / Linux / WSL / Git Bash
+pwsh setup.ps1            # Windows PowerShell
 
-# 3. Set up environment variables
-cp .env.example .env
-# Edit .env with your actual values
+# 3. Open in VS Code with Copilot, then in Copilot Chat:
+#       /ai-onboard
+#    (interactive wizard fills in every [PLACEHOLDER])
 
 # 4. [Add your start commands here]
 ```
@@ -48,13 +85,16 @@ cp .env.example .env
 ├── .vscode/                     ← Shared editor/MCP settings (committed)
 ├── .dev-docs/                   ← Dev notes for the workspace root (index + .old/)
 ├── .archive/                    ← Retired files, path-mirrored (read-only reference)
-├── .example-module/             ← Example module with its own .ai/instruct.md
+├── .example-module/             ← Bare scaffold for a new module
+├── .examples/                   ← Filled-in module showcases (auth-api, data-layer, ui-component)
+├── .cursor/rules/               ← Cursor pointer rules → .ai/ (no rule duplication)
 │
 ├── .env.example                 ← Environment variable template (committed)
 ├── .gitignore
 ├── AGENTS.md                    ← Discovery anchor for non-Copilot AI agents
 ├── CHANGELOG.md
 ├── LICENSE
+├── setup.sh / setup.ps1         ← One-shot installer (hooks + .env + validator)
 ├── TEMPLATE-USAGE.md            ← How to adapt this template to your project
 └── README.md                    ← This file
 ```

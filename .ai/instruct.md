@@ -72,7 +72,10 @@
 | `.ai/` | (global shared files) | Cross-cutting rules: conventions, maintenance, credentials, index |
 | `[module-a]/` | `[module-a]/.ai/instruct.md` | [description] |
 | `[module-b]/` | `[module-b]/.ai/instruct.md` | [description] |
+| `.example-module/` | `.example-module/.ai/instruct.md` | Bare scaffold for a new module (reference) |
+| `.examples/` | `.examples/README.md` | Filled-in module showcases: `auth-api`, `data-layer`, `ui-component` |
 | `.github/` | `.github/copilot-instructions.md` | AI tooling meta-instructions |
+| `.cursor/` | `.cursor/rules/project.mdc` | Pointer rules so Cursor reads the same `.ai/` hierarchy |
 
 > Add a row for every major directory that has its own `.ai/instruct.md`.
 

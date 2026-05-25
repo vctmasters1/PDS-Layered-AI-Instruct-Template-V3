@@ -2,7 +2,7 @@
 
 **Role of this file**: META — defines AI tooling conventions and meta-rules for how the instruction system operates. Business domain rules live in `.ai/instruct.md` files throughout the directory tree.
 
-**Template Version**: V3.1.0
+**Template Version**: V3.1.1
 **Last Updated**: 2026-05-25
 
 ---

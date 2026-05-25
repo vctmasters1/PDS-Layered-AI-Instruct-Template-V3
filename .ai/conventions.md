@@ -32,7 +32,7 @@
 - All archived content lives under `.archive/` using path-mirroring or `YYYYMMDD/` date-stamped subdirectories (see [Archive Patterns](maintenance.md#archive-patterns))
 - Dev documentation subdirectory is always `.dev-docs/` (dot-prefixed, never renamed)
 - AI instruction subdirectory is always `.ai/` (dot-prefixed, never renamed)
-- The dot-prefix convention applies to **four** categories of directories: tooling (`.github/`, `.vscode/`), hidden state (`.ai/`, `.dev-docs/`), archives (`.archive/`), and reference scaffolds shipped with the template (`.example-module/`). Do **not** dot-prefix real source modules.
+- The dot-prefix convention applies to **four** categories of directories: tooling (`.github/`, `.vscode/`, `.cursor/`), hidden state (`.ai/`, `.dev-docs/`), archives (`.archive/`), and reference scaffolds shipped with the template (`.example-module/`, `.examples/`). Do **not** dot-prefix real source modules.
 - Avoid spaces in all directory names
 
 ---
@@ -230,6 +230,8 @@ This principle extends to all `[PLACEHOLDER]` values in any instruction file: if
 > - “Firmware HAL layer must not call application-layer functions”
 >
 > Generic programming principles (single-responsibility, no monoliths) are not repeated here — only rules specific to this codebase.
+
+> **→ [Stack-Specific Conventions](stack-examples/README.md)** — copy-paste starting points for TypeScript+React, Python+FastAPI, and Embedded C/C++ projects. Reference only; not authoritative.
 
 ---
 

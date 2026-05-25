@@ -10,6 +10,22 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 _(no changes yet)_
 
+## [3.1.1] — 2026-05-25
+
+### Added
+- **`.examples/` filled-in module showcase** — three realistic worked examples (`auth-api`, `data-layer`, `ui-component`) each with a populated `.ai/instruct.md` and a `BEFORE-AFTER.md` showing concrete AI behavior changes once layered rules are in place.
+- **`setup.sh` / `setup.ps1`** — one-shot installer (git hooks, `.env` scaffold, validator run) so a fresh clone is bootstrapped before `/ai-onboard`.
+- **`.ai/stack-examples/`** — copy-paste reference Code Organization rules for TypeScript+React, Python+FastAPI, and Embedded C/C++.
+- **`.cursor/rules/project.mdc`** — Cursor compatibility pointer to the `.ai/` hierarchy (no rule duplication).
+- **`.github/PULL_REQUEST_TEMPLATE.md`** — AI-INSTRUCT-aware PR checklist (instruction discipline, safety, credentials).
+- **`.github/TOPICS.md`** — recommended GitHub repo topics for discoverability.
+- README hero section, status badges (License, Copilot Ready, AGENTS.md, Template V3), and a Mermaid diagram of the depth-priority layering.
+- TEMPLATE-USAGE.md → **Companion Resources** section with Awesome-Copilot, Cursor, Aider, stack-example, and filled-in module guidance.
+- `.example-module/` and `.examples/` registered in root `.ai/instruct.md` Key Directories; `.examples/` and stack-example sections added to `.ai/index.md`.
+
+### Changed
+- `.ai/conventions.md` dot-prefix list now includes `.cursor/` (tooling) and `.examples/` (reference scaffold).
+
 ## [3.1.0] — 2026-05-25
 
 ### Added

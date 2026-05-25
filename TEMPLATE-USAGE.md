@@ -3,6 +3,8 @@
 This guide walks you through customizing the **Depth-Priority Hierarchical AI-INSTRUCT V3** template for a new project.
 
 > **Fastest path: run `/ai-onboard` in Copilot Chat.** It's an interactive wizard that walks through Steps 1–6 below, detects defaults from your environment, and fills in every `[PLACEHOLDER]` for you. The manual steps below remain available if you prefer to drive it yourself or need to redo one section.
+>
+> **Faster than that: run the one-shot installer.** From a fresh clone, run `bash setup.sh` (macOS/Linux/WSL/Git Bash) or `pwsh setup.ps1` (Windows). It installs the git hooks, scaffolds `.env`, and runs the validator. Then drive `/ai-onboard` in Copilot Chat for the placeholder pass.
 
 ---
 
@@ -19,6 +21,7 @@ This guide walks you through customizing the **Depth-Priority Hierarchical AI-IN
 | [Step 6 — Add Environment Variables](#step-6--add-environment-variables) | Fill in .env.example |
 | [Ongoing Maintenance](#ongoing-maintenance) | How to keep the system healthy |
 | [Scaling Up](#scaling-up) | How the instruction system grows with your project |
+| [Companion Resources](#companion-resources) | Awesome-Copilot, Cursor compat, stack examples |
 | [Feature Reference](#feature-reference) | All system components at a glance |
 
 ---
@@ -38,7 +41,10 @@ This guide walks you through customizing the **Depth-Priority Hierarchical AI-IN
 | `.ai/credentials.md` | Credential warehousing, .gitignore, AI behavior |
 | `.ai/index.md` | Master index — every section in every instruction file |
 | `.ai/instruct.md` | Root-level project authority file |
-| `.example-module/` | Example of a module with its own `.ai/instruct.md` |
+| `.example-module/` | Bare scaffold for a new module |
+| `.examples/` | Filled-in showcase modules (`auth-api`, `data-layer`, `ui-component`) with before/after AI behavior |
+| `.cursor/rules/project.mdc` | Cursor compatibility — pointer to the `.ai/` hierarchy |
+| `setup.sh` / `setup.ps1` | One-shot installer: git hooks + `.env` scaffold + validator |
 | `.gitignore` | Credentials, deps, builds, OS artifacts |
 | `.env.example` | Root environment variable template (flat layout) |
 | `.vscode/mcp.json` | MCP server configuration template |
@@ -240,6 +246,61 @@ Each module that has its own runtime config gets its **own** flat `.env.example`
 ### When you add environment variables
 1. Add the key to root `.env.example` with a placeholder and comment
 2. If module-specific, add it to the module's `.env.example` (at the module root, flat — not in a `.env/` subdirectory)
+
+---
+
+## Companion Resources
+
+This template focuses on **structure**. Pair it with these community libraries when you need ready-made building blocks.
+
+### Awesome-Copilot (recommended)
+
+[github/awesome-copilot](https://github.com/github/awesome-copilot) is a curated catalog of 200+ Copilot instructions, prompts, agents, and skills. Most of them drop straight into this template's `.github/` directories without conflict:
+
+| Awesome-Copilot artifact | Drop into | Notes |
+|--------------------------|-----------|-------|
+| `*.instructions.md` files | `.github/instructions/` (create on first use) | Per-language style guides. They layer **alongside** — not on top of — this template's depth-priority rules. |
+| `*.prompt.md` files | `.github/prompts/` | If the file name collides with one of this template's `/ai-*` commands, rename the imported one — don't overwrite. |
+| `*.agent.md` files | `.github/agents/` | Compose freely with `project-explorer.agent.md`. |
+| `SKILL.md` files | `.github/skills/<skill>/SKILL.md` | Keep one skill per subdirectory. |
+
+**Rule of thumb**: pull individual files you actually need; don't vendor the whole catalog. Re-run `/ai-update-index` after adding files so they show up in [.ai/index.md](.ai/index.md).
+
+### Cursor users
+
+The shipped [`.cursor/rules/project.mdc`](.cursor/rules/project.mdc) points Cursor at the `.ai/` hierarchy. Do **not** duplicate rules into `.cursor/rules/` — Cursor's MDC files are pointers only. The canonical rules remain in `.ai/`.
+
+### Aider users
+
+Add this to `.aider.conf.yml` so Aider reads the layered rules:
+
+```yaml
+read:
+  - .ai/instruct.md
+  - .ai/conventions.md
+  - .ai/maintenance.md
+  - .ai/credentials.md
+```
+
+When working in a module, also pass `--read [module]/.ai/instruct.md`.
+
+### Stack-specific starting points
+
+For copy-paste **Code Organization** rules tuned to common stacks, see [`.ai/stack-examples/`](.ai/stack-examples/):
+
+- [TypeScript + React + Vite](.ai/stack-examples/typescript-react.md)
+- [Python + FastAPI](.ai/stack-examples/python-fastapi.md)
+- [Embedded C / C++](.ai/stack-examples/embedded-c.md)
+
+These are reference snippets, not authoritative — paste what fits into a real `.ai/instruct.md`.
+
+### Filled-in module examples
+
+See [`.examples/`](.examples/) for three realistic module-level `.ai/instruct.md` files with **before/after AI behavior** writeups:
+
+- [`auth-api`](.examples/auth-api/) — Express + JWT + Postgres backend service.
+- [`data-layer`](.examples/data-layer/) — TypeORM repository / migration discipline.
+- [`ui-component`](.examples/ui-component/) — React + Tailwind component library.
 
 ---
 
