@@ -40,6 +40,9 @@ auth-api/
 ├── .ai/instruct.md             ← this file
 ├── .dev-docs/index.md
 ├── .env.example
+├── README.md                    ← reading order for the worked code
+├── package.json
+├── tsconfig.json
 ├── src/
 │   ├── index.ts                ← server bootstrap; nothing else
 │   ├── routes/                 ← Express routers only — thin HTTP adapters
@@ -48,14 +51,16 @@ auth-api/
 │   │   └── reset-password.route.ts
 │   ├── services/               ← business logic; routes call services
 │   │   ├── auth.service.ts
-│   │   └── token.service.ts
+│   │   └── token.service.ts        ← only place that calls jwt.sign / jwt.verify
 │   ├── repositories/           ← the only place that touches the DB
 │   │   ├── user.repository.ts
 │   │   └── session.repository.ts
-│   ├── lib/                    ← framework-agnostic helpers (hashing, errors)
+│   ├── lib/                    ← framework-agnostic helpers (hash, errors, response, logger, timing)
 │   └── schemas/                ← Zod request/response schemas
+├── scripts/
+│   └── check-layering.mjs       ← CI gate — fails if routes import repositories
 └── test/
-    ├── unit/                   ← services + lib
+    ├── unit/                   ← services + lib (repos mocked)
     └── integration/            ← routes against a real Postgres test container
 ```
 
@@ -65,7 +70,7 @@ auth-api/
 
 ### Layering
 
-1. **Routes never call the database directly.** Routes call services; services call repositories; repositories call the ORM. A failed `grep -nE "(getRepository|dataSource\.)" src/routes/` is a CI gate.
+1. **Routes never call the database directly.** Routes call services; services call repositories; repositories call the ORM. Enforced by [`scripts/check-layering.mjs`](../scripts/check-layering.mjs) (`npm run lint:layering`) as a CI gate.
 2. **Repositories never throw HTTP errors.** They throw domain errors (`UserNotFoundError`, `EmailTakenError`) defined in `src/lib/errors.ts`. Services translate them to HTTP at the boundary.
 3. **No business logic in routes.** A route handler is at most: validate input with Zod → call one service method → format response envelope → send.
 4. **All responses use the `{ data, error, meta }` envelope** from `src/lib/response.ts`. No raw entity dumps.

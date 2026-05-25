@@ -22,11 +22,17 @@ When publishing this template (or a fork of it) to GitHub, add the following top
 - `cursor-compatible`
 - `mcp`
 
+## Recommended repo description (About sidebar)
+
+> A Copilot-ready project template using Depth-Priority Hierarchical AI-INSTRUCT V3 — per-directory `.ai/instruct.md` rules, slash commands, custom agents, skills, hooks, and a drift validator.
+
 ## How to apply
 
 ```bash
-# Using GitHub CLI:
-gh repo edit --add-topic copilot-template,github-copilot,ai-first-development,copilot-agents,copilot-skills,layered-instructions,ai-instruct,agents-md
+# Using GitHub CLI — set description + homepage + topics in one shot:
+gh repo edit \
+  --description "A Copilot-ready project template using Depth-Priority Hierarchical AI-INSTRUCT V3 — per-directory .ai/instruct.md rules, slash commands, custom agents, skills, hooks, and a drift validator." \
+  --add-topic copilot-template,github-copilot,ai-first-development,copilot-agents,copilot-skills,layered-instructions,ai-instruct,agents-md
 ```
 
-Or click the gear next to **About** on the repo page and paste the comma-separated list.
+Or, in the GitHub UI: click the gear next to **About** on the repo page, paste the description, and paste the comma-separated topic list.

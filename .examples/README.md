@@ -10,7 +10,7 @@ The bare scaffold for a brand-new module lives in [`.example-module/`](../.examp
 
 | Example | Stack | Demonstrates |
 |---------|-------|--------------|
-| [`auth-api/`](auth-api/) | Node.js · Express · JWT · Postgres | Backend service module with route/service/repository layering and security rules |
+| [`auth-api/`](auth-api/) | Node.js · Express · JWT · Postgres | Backend service with route/service/repository layering, security rules, and a CI gate. **Includes real TypeScript code** — see [`auth-api/README.md`](auth-api/README.md) for the reading order. |
 | [`data-layer/`](data-layer/) | TypeScript · TypeORM · Postgres | Shared data-access module with repository pattern, migration discipline, transaction rules |
 | [`ui-component/`](ui-component/) | React · TypeScript · Tailwind · Storybook | Frontend component library with naming, accessibility, and styling rules |
 
@@ -36,6 +36,6 @@ Once you're confident the team is using the system, you can archive this directo
 
 ## What these examples are **not**
 
-- Not source code that compiles or runs.
+- Not wired into any build — `auth-api/` ships compilable TypeScript but its dependencies aren't installed and its repository is stubbed; the other examples are instructions-only.
 - Not a recommended file layout for any specific framework — directory layouts here are illustrative.
 - Not authoritative for the rest of this template. The canonical rules still live in [`.ai/conventions.md`](../.ai/conventions.md), [`.ai/maintenance.md`](../.ai/maintenance.md), and [`.ai/credentials.md`](../.ai/credentials.md).

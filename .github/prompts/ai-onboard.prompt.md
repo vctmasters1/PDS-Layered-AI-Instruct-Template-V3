@@ -23,9 +23,11 @@ Convert this template from a generic scaffold into a live project. Walk the user
 
 ## Steps
 
-### 1. Detect onboarding state
+### 1. Detect onboarding state and auto-fillable values
 
-Before asking anything, scan the project to see what's already been onboarded:
+Before asking anything, scan the project to see what's already been onboarded AND collect every value that can be inferred without user input.
+
+**Onboarding state checks** (what is still a placeholder):
 
 - Does `.ai/instruct.md` still contain `[PROJECT_NAME]`?
 - Does `LICENSE` still contain `[YEAR]` or `[COPYRIGHT_HOLDER]`?
@@ -33,6 +35,22 @@ Before asking anything, scan the project to see what's already been onboarded:
 - Does `README.md` still contain `[PROJECT_NAME]` / `[repo-url]`?
 - Does `.example-module/` still exist?
 - Run [.github/scripts/validate-instructions.ps1](../scripts/validate-instructions.ps1) and capture its findings.
+
+**Auto-detect defaults** (gather *before* asking any questions; present as pre-filled answers):
+
+| Field | Detect from |
+|---|---|
+| `[PROJECT_NAME]` default | Workspace folder name (Title Case if kebab/snake) |
+| `[repo-url]` | `git remote get-url origin` (if a remote exists) |
+| `[project-name]` (clone path) | Tail of the repo URL, or the workspace folder name |
+| `[YEAR]` | Current year from the session date |
+| `[COPYRIGHT_HOLDER]` | `git config user.name` (fall back to GitHub org/user from the remote URL) |
+| `Last Updated` | Session date in `YYYY-MM-DD` |
+| Developer OS | Session `environment_info` / shell |
+| Language / framework / package manager | Presence of `package.json`, `pnpm-lock.yaml`, `yarn.lock`, `bun.lockb`, `pyproject.toml`, `requirements.txt`, `Cargo.toml`, `go.mod`, `CMakeLists.txt`, `pom.xml`, `Gemfile`, `composer.json` |
+| Top-level modules | Existing non-hidden, non-dot directories in workspace root that already contain source code |
+
+**Auto-apply policy**: any field above whose detected value is unambiguous (workspace folder name, current year, git user.name, session date) is **filled immediately**, not asked. Mention what you filled in the opening summary so the user can correct any wrong guess in one message.
 
 Tell the user what state the project is in, then ask if they want a **full onboarding** (every step below) or a **targeted** pass (only the unfilled sections).
 

@@ -29,6 +29,64 @@ flowchart TD
     class SubA1 deep;
 ```
 
+### How the pieces fit together
+
+```mermaid
+flowchart LR
+    subgraph github[".github/"]
+        Meta["copilot-instructions.md<br/>(META rules)"]
+        Specs["dev-specs.md<br/>(platform facts)"]
+        Prompts["prompts/<br/>/ai-onboard, /ai-commit,<br/>/ai-new-module, /ai-validate,<br/>/ai-update-index, /ai-archive"]
+        Agents["agents/<br/>project-explorer (read-only)"]
+        Skills["skills/<br/>project-navigation"]
+        Hooks["hooks/<br/>pre-commit credential check"]
+        Scripts["scripts/<br/>validate-instructions.ps1"]
+    end
+
+    subgraph ai[".ai/ (cross-cutting)"]
+        Conv["conventions.md"]
+        Maint["maintenance.md"]
+        Creds["credentials.md"]
+        Index["index.md (master)"]
+    end
+
+    Root[".ai/instruct.md<br/>root authority"]
+    ModRules["[module]/.ai/instruct.md<br/>module authority"]
+    Code["your source code"]
+
+    Meta -.governs.-> Root
+    Specs -.consulted by.-> Root
+    Root --> ModRules
+    ModRules --> Code
+
+    Conv & Maint & Creds -.linked from.-> Root
+    Conv & Maint & Creds -.linked from.-> ModRules
+    Index -.indexes.-> Conv
+    Index -.indexes.-> Maint
+    Index -.indexes.-> Creds
+    Index -.indexes.-> Root
+    Index -.indexes.-> ModRules
+
+    Prompts -.act on.-> Root
+    Prompts -.act on.-> ModRules
+    Agents -.scoped to.-> Code
+    Skills -.briefed for.-> Code
+    Hooks -.gate.-> Code
+    Scripts -.audit.-> Root
+    Scripts -.audit.-> ModRules
+
+    classDef meta fill:#eef,stroke:#88f;
+    classDef ai fill:#efe,stroke:#494;
+    classDef code fill:#fff,stroke:#aaa;
+    classDef gate fill:#fee,stroke:#c44;
+    class Meta,Specs,Prompts,Agents,Skills meta;
+    class Conv,Maint,Creds,Index,Root,ModRules ai;
+    class Code code;
+    class Hooks,Scripts gate;
+```
+
+Read the **vertical** chain (Meta → Root → Module → Code) as authority. Read the **`.ai/` cross-cutting block** as shared rules that any layer can link to without restating. Read **prompts / agents / skills / hooks / scripts** as tools that act on or audit the system.
+
 What you get out of the box:
 
 - **Layered rules** — global rules in [`.ai/`](.ai/), module-specific overrides per directory.
@@ -36,7 +94,7 @@ What you get out of the box:
 - **Custom agents & skills** — read-only exploration agent, navigation skill, room to add your own.
 - **Safety built-in** — pre-commit credential block, never-delete + archive convention, never-reset-db rule.
 - **Multi-tool ready** — Copilot, Codex (via [AGENTS.md](AGENTS.md)), Cursor (via [`.cursor/rules/`](.cursor/rules/)), Aider.
-- **Filled-in examples** — see [`.examples/`](.examples/) for `auth-api`, `data-layer`, and `ui-component` showcases with **before/after** AI behavior.
+- **Filled-in examples** — see [`.examples/`](.examples/) for `auth-api` (with real TypeScript code), `data-layer`, and `ui-component` showcases with **before/after** AI behavior.
 
 ---
 
