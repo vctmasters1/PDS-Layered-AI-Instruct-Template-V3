@@ -9,6 +9,27 @@
 
 > 📋 **This is the template repository.** After you clone it, run `/ai-onboard` in Copilot Chat — an interactive wizard will replace every placeholder below (`your-project`, repo URL, copyright holder, etc.) with your real values. See [TEMPLATE-USAGE.md](TEMPLATE-USAGE.md) for the full adoption path.
 
+## Executive Summary (30 seconds)
+
+- **Who this is for:** teams using Copilot/Cursor/Codex/Aider who want predictable AI behavior across a real multi-folder codebase.
+- **Problem solved:** replaces one giant instruction file with scoped, per-directory rules so agents get local context and make fewer wrong edits.
+- **Why V3 matters:** depth-priority layering + onboarding prompts + validation/safety conventions makes the system easier to adopt and safer to scale.
+
+### Simple diagram for non-technical readers
+
+```text
+Project-wide rules (root .ai/instruct.md)
+            │
+            ▼
+Module rules (team/service specific)
+            │
+            ▼
+Folder rules (task/local edge cases)
+            │
+            ▼
+AI applies deepest matching rule
+```
+
 ---
 
 ## Why this template
@@ -100,6 +121,91 @@ What you get out of the box:
 
 ---
 
+## Best fit / Not fit
+
+### Best fit
+
+- You have a monorepo or modular repo where one global instruction file is too coarse.
+- You want a repeatable onboarding flow (`/ai-onboard`) for new contributors.
+- You need guardrails for credential safety, archive-first maintenance, and instruction drift checks.
+
+### Not fit
+
+- You only need lightweight prompting for a tiny single-folder prototype.
+- Your team does not want to maintain any instruction files beyond one short root note.
+- You cannot run basic setup/validation steps during onboarding.
+
+---
+
+## Validation & Status
+
+Add your CI badge(s) here when enabled for your project, for example:  
+[![CI](https://github.com/your-username/your-repo/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/your-repo/actions/workflows/ci.yml)
+
+- **Installer checks (`setup.sh` / `setup.ps1`)** install hooks, scaffold `.env`, and run the validator when `pwsh` is available.
+- **Safety conventions** include pre-commit credential scanning, blocked staged `.env` files, archive-first maintenance, and never-reset-db guidance.
+- **Validation script**: `.github/scripts/validate-instructions.ps1` checks instruction drift, frontmatter sanity, and markdown link integrity.
+
+---
+
+## Realistic before/after walkthrough (text benchmark)
+
+> Synthetic but realistic walkthrough using template examples (no private customer code).
+
+### Scenario A — "Add auth endpoint with role checks"
+
+- **Before (flat instructions):** agent adds route logic directly in controllers, mixes validation, and bypasses repository boundaries.
+- **After (V3 layered):** agent follows module-local service/repository split, uses documented auth patterns, and keeps route/service/repository boundaries consistent with [`auth-api` example guidance](.examples/auth-api/.ai/instruct.md).
+
+### Scenario B — "Fix schema migration under deadline"
+
+- **Before (ad-hoc prompting):** agent suggests destructive reset shortcuts.
+- **After (V3 layered):** agent follows migration conventions and archive/maintenance rules, avoiding unsafe reset recommendations.
+
+### Scenario C — "Refactor UI component variants"
+
+- **Before (tool-only defaults):** inconsistent naming and props shape across related components.
+- **After (V3 layered):** naming and structure align with shared conventions + module overrides, reducing rework in review.
+
+---
+
+## Screenshots / GIFs (placeholder for future media)
+
+Until media is added, use these step-by-step references:
+
+1. **`/ai-onboard` flow:** open Copilot Chat → run `/ai-onboard` → confirm detected stack/platform values → apply generated replacements.
+2. **Validation flow:** run `pwsh -NoProfile -File .github/scripts/validate-instructions.ps1` (or `/ai-validate`) → fix flagged drift issues → re-run until clean.
+3. **Expected visual assets to add later:** onboarding prompt screenshot, validator pass output screenshot, before/after diff GIF.
+
+Suggested alt text for future media:
+- **Alt text:** Copilot Chat showing /ai-onboard questions and detected project defaults
+- **Alt text:** Terminal output showing AI-INSTRUCT validator checks passing
+- **Alt text:** Side-by-side before/after AI edit behavior with layered instructions enabled
+
+Planned timing: add media after real-world adoption examples are available and sanitized for template-safe sharing.
+
+---
+
+## Comparison: setup choices
+
+| Setup | What you get | Gaps / tradeoffs |
+|---|---|---|
+| Plain `copilot-instructions.md` only | Quick start, one central policy file | Weak local context in larger repos; more prompt repetition |
+| `AGENTS.md` only | Discovery entrypoint for non-Copilot tools | Not a full scoped rule system by itself |
+| Cursor-only rules | Strong Cursor integration | Less portable across Copilot/Codex/Aider workflows |
+| **Layered AI-INSTRUCT Template V3** | Depth-priority scoped rules + prompts + validation + safety conventions | Slightly higher initial setup, but better long-term consistency |
+
+---
+
+## Version / Upgrade Notes (V3)
+
+- V3 standardizes depth-priority authority: **deepest matching `instruct.md` wins**.
+- V3 formalizes onboarding/maintenance commands (`/ai-onboard`, `/ai-validate`, `/ai-archive`, etc.).
+- V3 introduces stronger validator coverage and clearer instruction cross-references.
+- If upgrading from a flatter setup, start by migrating root rules to `.ai/instruct.md`, then split module-specific rules into local `.ai/instruct.md` files.
+
+---
+
 ## Quick Start
 
 ```bash
@@ -168,6 +274,7 @@ your-project/
 | [.ai/instruct.md](.ai/instruct.md) | Project architecture and rules for AI |
 | [.ai/index.md](.ai/index.md) | Master index of all AI instruction sections |
 | [TEMPLATE-USAGE.md](TEMPLATE-USAGE.md) | How to adapt this template to your project |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute safely and consistently |
 
 ---
 
