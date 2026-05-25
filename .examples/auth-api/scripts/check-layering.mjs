@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Layering CI gate. See .ai/instruct.md → Module-Specific Rules § Layering rule 1.
+// Layering CI gate. See auth-api/.ai/instruct.md → Module-Specific Rules → Layering → Rule 1.
 // Fails if any route file imports a repository or talks to the ORM directly.
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';

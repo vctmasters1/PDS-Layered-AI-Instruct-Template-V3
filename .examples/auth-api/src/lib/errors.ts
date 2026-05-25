@@ -1,6 +1,6 @@
 // Domain errors. Routes translate these to HTTP at the boundary.
 // Services and repositories NEVER throw HTTP-shaped errors.
-// Per .ai/instruct.md → Module-Specific Rules § Layering.
+// Per auth-api/.ai/instruct.md → Module-Specific Rules → Layering.
 
 export class InvalidCredentialsError extends Error {
   constructor() {

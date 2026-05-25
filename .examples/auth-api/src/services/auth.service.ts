@@ -1,5 +1,5 @@
 // Business logic. Calls repositories, throws DOMAIN errors (not HTTP).
-// Per .ai/instruct.md → Module-Specific Rules § Layering.
+// Per auth-api/.ai/instruct.md → Module-Specific Rules → Layering.
 
 import { userRepository } from '../repositories/user.repository.js';
 import { verifyPassword } from '../lib/hash.js';

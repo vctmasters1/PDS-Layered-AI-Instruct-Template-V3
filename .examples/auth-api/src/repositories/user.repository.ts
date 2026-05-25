@@ -1,5 +1,5 @@
 // The ONLY place that touches the database. Throws domain errors, not HTTP.
-// Per .ai/instruct.md → Module-Specific Rules § Layering.
+// Per auth-api/.ai/instruct.md → Module-Specific Rules → Layering.
 
 export interface UserRow {
   id: string;

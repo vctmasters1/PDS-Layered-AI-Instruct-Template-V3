@@ -1,5 +1,5 @@
 // Shared response envelope — { data, error, meta }.
-// Per .ai/instruct.md → Module-Specific Rules § Layering rule 4.
+// Per auth-api/.ai/instruct.md → Module-Specific Rules → Layering → Rule 4.
 
 export function ok<T>(data: T, meta: Record<string, unknown> = {}) {
   return { data, error: null, meta };
