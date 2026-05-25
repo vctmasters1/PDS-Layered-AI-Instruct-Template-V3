@@ -3,8 +3,9 @@
 // Fails if any route file imports a repository or talks to the ORM directly.
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROUTES = new URL('../src/routes/', import.meta.url).pathname;
+const ROUTES = fileURLToPath(new URL('../src/routes/', import.meta.url));
 
 function walk(dir) {
   return readdirSync(dir).flatMap((name) => {
