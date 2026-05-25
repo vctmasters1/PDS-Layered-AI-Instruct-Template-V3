@@ -1,7 +1,7 @@
 import argon2 from 'argon2';
 
-// Centralised argon2id parameters — per .ai/instruct.md → Security Rule 1.
-const OPTIONS: argon2.Options = {
+// Centralised argon2id parameters — per auth-api/.ai/instruct.md → Security Rule 1.
+const OPTIONS: argon2.Options & { raw?: false } = {
   type: argon2.argon2id,
   memoryCost: 64 * 1024, // 64 MiB
   timeCost: 3,

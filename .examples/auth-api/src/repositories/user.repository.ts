@@ -14,4 +14,10 @@ export const userRepository = {
     void email;
     return null;
   },
+
+  async create(user: Omit<UserRow, 'id'>): Promise<UserRow> {
+    // INSERT INTO users (id, email, password_hash) VALUES (gen_random_uuid(), $1, $2) RETURNING *
+    void user;
+    return { id: 'stub-uuid', email: user.email, passwordHash: user.passwordHash };
+  },
 };

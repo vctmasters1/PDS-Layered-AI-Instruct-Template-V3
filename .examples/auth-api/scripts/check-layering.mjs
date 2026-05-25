@@ -4,7 +4,7 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
-const ROUTES = new URL('../src/routes/', import.meta.url).pathname.replace(/^\//, '');
+const ROUTES = new URL('../src/routes/', import.meta.url).pathname;
 
 function walk(dir) {
   return readdirSync(dir).flatMap((name) => {
