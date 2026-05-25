@@ -139,9 +139,11 @@ What you get out of the box:
 
 ## Validation & Status
 
-> Add your CI badge(s) here when enabled for your project:
->
-> `[![CI](https://img.shields.io/badge/CI-configure_me-lightgrey)](#)`
+Add your CI badge(s) here when enabled for your project, for example:
+
+```md
+[![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
+```
 
 - **Installer checks (`setup.sh` / `setup.ps1`)** install hooks, scaffold `.env`, and run the validator when `pwsh` is available.
 - **Safety conventions** include pre-commit credential scanning, blocked staged `.env` files, archive-first maintenance, and never-reset-db guidance.
@@ -156,7 +158,7 @@ What you get out of the box:
 ### Scenario A — "Add auth endpoint with role checks"
 
 - **Before (flat instructions):** agent adds route logic directly in controllers, mixes validation, and bypasses repository boundaries.
-- **After (V3 layered):** agent follows module-local service/repository split, uses documented auth patterns, and preserves boundaries enforced in example lint flow.
+- **After (V3 layered):** agent follows module-local service/repository split, uses documented auth patterns, and keeps route/service/repository boundaries consistent with the `auth-api` example guidance.
 
 ### Scenario B — "Fix schema migration under deadline"
 
@@ -192,7 +194,7 @@ Suggested alt text for future media:
 | Plain `copilot-instructions.md` only | Quick start, one central policy file | Weak local context in larger repos; more prompt repetition |
 | `AGENTS.md` only | Discovery entrypoint for non-Copilot tools | Not a full scoped rule system by itself |
 | Cursor-only rules | Strong Cursor integration | Less portable across Copilot/Codex/Aider workflows |
-| **PDS Layered AI-INSTRUCT V3** | Depth-priority scoped rules + prompts + validation + safety conventions | Slightly higher initial setup, but better long-term consistency |
+| **Layered AI-INSTRUCT Template V3** | Depth-priority scoped rules + prompts + validation + safety conventions | Slightly higher initial setup, but better long-term consistency |
 
 ---
 
