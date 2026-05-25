@@ -8,7 +8,7 @@
 
 ## Example Filled Profile (reference only)
 
-> Keep this example as guidance. Fill the checklist template below with your own project values.
+> Keep this example as guidance. Fill the checklist template below (starting at **Development Platform**) with your own project values.
 
 **Project Name:** Example SaaS API + Dashboard  
 **Repo Shape:** Monorepo (API + web app + shared package)  

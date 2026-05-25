@@ -158,7 +158,7 @@ Add your CI badge(s) here when enabled for your project, for example:
 ### Scenario A — "Add auth endpoint with role checks"
 
 - **Before (flat instructions):** agent adds route logic directly in controllers, mixes validation, and bypasses repository boundaries.
-- **After (V3 layered):** agent follows module-local service/repository split, uses documented auth patterns, and keeps route/service/repository boundaries consistent with the `auth-api` example guidance.
+- **After (V3 layered):** agent follows module-local service/repository split, uses documented auth patterns, and keeps route/service/repository boundaries consistent with [`auth-api` example guidance](.examples/auth-api/.ai/instruct.md).
 
 ### Scenario B — "Fix schema migration under deadline"
 
@@ -184,6 +184,8 @@ Suggested alt text for future media:
 - `Alt: Copilot Chat showing /ai-onboard questions and detected project defaults`
 - `Alt: Terminal output showing AI-INSTRUCT validator checks passing`
 - `Alt: Side-by-side before/after AI edit behavior with layered instructions enabled`
+
+Planned timing: add media after the first public adopter walkthrough is sanitized for template-safe sharing.
 
 ---
 
