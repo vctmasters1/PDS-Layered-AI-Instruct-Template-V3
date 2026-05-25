@@ -1,11 +1,13 @@
-# [PROJECT_NAME]
+# PDS Layered AI-INSTRUCT Template V3
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Copilot Ready](https://img.shields.io/badge/Copilot-ready-blueviolet)](.github/copilot-instructions.md)
 [![AGENTS.md](https://img.shields.io/badge/AGENTS.md-discoverable-success)](AGENTS.md)
 [![Template V3](https://img.shields.io/badge/PDS_AI--INSTRUCT-V3-informational)](.github/copilot-instructions.md)
 
-> [One-sentence description of what this project does.]
+> Advanced starter template with **Depth-Priority Hierarchical AI Instructions** for GitHub Copilot Agents, Cursor, Codex, and Aider. Reduces AI hallucinations through per-directory scoped rules where **the deepest file always wins**.
+
+> 📋 **This is the template repository.** After you clone it, run `/ai-onboard` in Copilot Chat — an interactive wizard will replace every placeholder below (`your-project`, repo URL, copyright holder, etc.) with your real values. See [TEMPLATE-USAGE.md](TEMPLATE-USAGE.md) for the full adoption path.
 
 ---
 
@@ -101,9 +103,9 @@ What you get out of the box:
 ## Quick Start
 
 ```bash
-# 1. Clone
-git clone [repo-url]
-cd [project-name]
+# 1. Clone this template (or click "Use this template" on GitHub)
+git clone https://github.com/vctmasters1/PDS-Layered-AI-Instruct-Template-V3.git your-project
+cd your-project
 
 # 2. One-shot setup (installs hooks, scaffolds .env, runs validator)
 bash setup.sh             # macOS / Linux / WSL / Git Bash
@@ -111,9 +113,9 @@ pwsh setup.ps1            # Windows PowerShell
 
 # 3. Open in VS Code with Copilot, then in Copilot Chat:
 #       /ai-onboard
-#    (interactive wizard fills in every [PLACEHOLDER])
+#    (interactive wizard auto-detects defaults and fills in every placeholder)
 
-# 4. [Add your start commands here]
+# 4. Add your project's start commands here once /ai-onboard is done.
 ```
 
 ---
@@ -121,7 +123,7 @@ pwsh setup.ps1            # Windows PowerShell
 ## Project Structure
 
 ```
-[PROJECT_NAME]/
+your-project/
 ├── .github/                     ← AI tooling: instructions, prompts, agents, hooks
 │   ├── copilot-instructions.md  ← META: how the .ai/ instruction system works
 │   ├── dev-specs.md             ← Dev platform, target platform, frameworks config
