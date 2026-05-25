@@ -31,8 +31,11 @@ This repo's instruction system is designed primarily for **GitHub Copilot** (whi
 - **OpenAI Codex CLI** — auto-discovers this `AGENTS.md`.
 - **Aider** — does **not** auto-discover `AGENTS.md`. Point it at the instruction files explicitly via `--read .ai/conventions.md --read .ai/instruct.md` (or list them under `read:` in `.aider.conf.yml`).
 - **Cursor** — pre-configured via [`.cursor/rules/project.mdc`](.cursor/rules/project.mdc), a pointer rule that directs Cursor to read the same `.ai/` hierarchy. Do not duplicate rules into `.cursor/rules/`.
+- **Claude Code** — pre-configured via [`CLAUDE.md`](CLAUDE.md) at the repo root, a pointer file that directs Claude Code to read the same `.ai/` hierarchy. Do not put project rules into `CLAUDE.md`.
+- **Continue** — pre-configured via [`.continue/rules/project.md`](.continue/rules/project.md), a pointer rule that directs Continue to read the same `.ai/` hierarchy. Do not duplicate rules into `.continue/rules/`.
+- **Cline** — pre-configured via [`.clinerules/project.md`](.clinerules/project.md), a pointer rule that directs Cline to read the same `.ai/` hierarchy. Do not duplicate rules into `.clinerules/`.
 
-Other agents (Claude Code, etc.) are not pre-configured here. Most can be pointed at the files listed above via their own configuration mechanism.
+Other agents not listed above can be pointed at the files listed above via their own configuration mechanism — add a new pointer file following the same pattern.
 
 For any tool: the contract is "read the files referenced above; the deepest `.ai/instruct.md` in your current working directory is authoritative."
 

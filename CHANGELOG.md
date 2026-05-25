@@ -8,7 +8,12 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## [Unreleased]
 
-_(no changes yet)_
+### Added
+- **Claude Code, Continue, and Cline pointer files** — pre-configured compatibility for three additional AI coding agents, following the same "pointer, not duplication" pattern as the existing Cursor integration:
+  - [`CLAUDE.md`](CLAUDE.md) at the repo root for Claude Code.
+  - [`.continue/rules/project.md`](.continue/rules/project.md) for Continue.
+  - [`.clinerules/project.md`](.clinerules/project.md) for Cline.
+- `AGENTS.md` tool compatibility section updated to list all five pre-configured agents (Copilot, Codex CLI, Aider, Cursor, Claude Code, Continue, Cline).
 
 ## [3.1.1] — 2026-05-25
 
