@@ -1,4 +1,4 @@
-// Thin HTTP adapter. Pattern enforced by .ai/instruct.md:
+// Thin HTTP adapter. Pattern enforced by auth-api/.ai/instruct.md:
 //   validate input (Zod) → call ONE service method → format envelope → send.
 // No business logic. No DB calls.
 
@@ -7,10 +7,11 @@ import { loginSchema } from '../schemas/login.schema.js';
 import { authService } from '../services/auth.service.js';
 import { ok, fail } from '../lib/response.js';
 import { InvalidCredentialsError } from '../lib/errors.js';
+import { authRateLimit } from '../lib/rate-limit.js';
 
 export const loginRoute = Router();
 
-loginRoute.post('/login', async (req, res) => {
+loginRoute.post('/login', authRateLimit, async (req, res) => {
   const parsed = loginSchema.safeParse(req.body);
   if (!parsed.success) {
     return res.status(400).json(fail('VALIDATION', parsed.error.issues));

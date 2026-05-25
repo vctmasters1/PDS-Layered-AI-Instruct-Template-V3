@@ -12,6 +12,7 @@
 #   5. Relative markdown links resolve. Every `](path)` link (skipping http,
 #      https, mailto, and pure `#anchor` links) is resolved against the
 #      containing file's directory and flagged if the target does not exist.
+#      (node_modules/ directories are excluded from this check.)
 #
 # Exit code is 0 on success, 1 on any failure. Safe to wire into a pre-commit hook.
 
@@ -85,7 +86,7 @@ foreach ($f in $agentFiles) {
 $allMdFiles = Get-ChildItem -Path . -Recurse -Force -File -Filter '*.md' |
 Where-Object {
   $rel = $_.FullName.Substring($root.Length).TrimStart('\', '/').Replace('\', '/')
-  $rel -notlike '.archive/*' -and $rel -notlike '*/.dev-docs/.old/*'
+  $rel -notlike '.archive/*' -and $rel -notlike '*/.dev-docs/.old/*' -and $rel -notlike '*/node_modules/*'
 }
 
 $linkRegex = [regex]'\]\(([^)\s]+?)(?:\s+"[^"]*")?\)'

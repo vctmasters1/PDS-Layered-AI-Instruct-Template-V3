@@ -140,7 +140,7 @@ What you get out of the box:
 ## Validation & Status
 
 Add your CI badge(s) here when enabled for your project, for example:  
-[![CI](https://github.com/your-username/your-repo/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/your-repo/actions/workflows/ci.yml)
+[![CI](https://github.com/vctmasters1/PDS-Layered-AI-Instruct-Template-V3/actions/workflows/ci.yml/badge.svg)](https://github.com/vctmasters1/PDS-Layered-AI-Instruct-Template-V3/actions/workflows/ci.yml)
 
 - **Installer checks (`setup.sh` / `setup.ps1`)** install hooks, scaffold `.env`, and run the validator when `pwsh` is available.
 - **Safety conventions** include pre-commit credential scanning, blocked staged `.env` files, archive-first maintenance, and never-reset-db guidance.
