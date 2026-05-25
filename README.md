@@ -139,11 +139,8 @@ What you get out of the box:
 
 ## Validation & Status
 
-Add your CI badge(s) here when enabled for your project, for example:
-
-```md
-[![CI](https://github.com/your-username/your-repo/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/your-repo/actions/workflows/ci.yml)
-```
+Add your CI badge(s) here when enabled for your project, for example:  
+`[![CI](https://github.com/your-username/your-repo/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/your-repo/actions/workflows/ci.yml)`
 
 - **Installer checks (`setup.sh` / `setup.ps1`)** install hooks, scaffold `.env`, and run the validator when `pwsh` is available.
 - **Safety conventions** include pre-commit credential scanning, blocked staged `.env` files, archive-first maintenance, and never-reset-db guidance.
@@ -181,9 +178,9 @@ Until media is added, use these step-by-step references:
 3. **Expected visual assets to add later:** onboarding prompt screenshot, validator pass output screenshot, before/after diff GIF.
 
 Suggested alt text for future media:
-- `Alt: Copilot Chat showing /ai-onboard questions and detected project defaults`
-- `Alt: Terminal output showing AI-INSTRUCT validator checks passing`
-- `Alt: Side-by-side before/after AI edit behavior with layered instructions enabled`
+- Alt: Copilot Chat showing /ai-onboard questions and detected project defaults
+- Alt: Terminal output showing AI-INSTRUCT validator checks passing
+- Alt: Side-by-side before/after AI edit behavior with layered instructions enabled
 
 Planned timing: add media after real-world adoption examples are available and sanitized for template-safe sharing.
 
