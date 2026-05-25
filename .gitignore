@@ -1,0 +1,98 @@
+# Environment & Credentials (NEVER COMMIT)
+# Strategy: ignore real .env files everywhere; explicitly re-include *.example templates.
+.env
+.env.local
+.env.*.local
+.env.development
+.env.staging
+.env.production
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# Dependencies
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.Python
+pip-log.txt
+
+# Build outputs
+dist/
+build/
+out/
+*.js.map
+*.d.ts.map
+.cache/
+.next/
+.nuxt/
+.svelte-kit/
+
+# IDE & editor
+# Note: root-level <project>.code-workspace IS committed (shared workspace baseline).
+# Ignore only the .vscode/ duplicates and personal local overrides.
+.vscode/*.code-workspace
+.vscode/*.local.json    # personal setting overrides — see .ai/conventions.md#gitignore-decisions
+.idea/
+*.suo
+*.user
+*.sublime-project
+*.sublime-workspace
+
+# OS artifacts
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Test & coverage
+coverage/
+.nyc_output/
+.pytest_cache/
+htmlcov/
+*.coverage
+
+# Temporary & ephemeral
+.github/tmp/*
+!.github/tmp/README.md
+.github/debug/*
+!.github/debug/README.md
+*.tmp
+*.temp
+*.swp
+*~
+
+# Database
+*.sqlite
+*.sqlite3
+*.db
+
+# Docker local overrides
+docker-compose.override.yml
+
+# Compiled binaries & firmware
+*.bin
+*.elf
+*.hex
+*.map
+sdkconfig.old
