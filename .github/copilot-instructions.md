@@ -80,6 +80,7 @@ Cross-cutting rules that would otherwise be duplicated across many files live he
 ├── conventions.md    ← Naming, file organization, TOC rules (canonical)
 ├── maintenance.md    ← Archive patterns, never-delete, never-reset-db rules (canonical)
 ├── credentials.md    ← Credential warehousing + .gitignore rules (canonical)
+├── environment.md    ← Host-vs-container isolation rules; never silently mutate the host (canonical)
 └── index.md          ← MASTER INDEX of all instruction sections across the project
 ```
 
@@ -97,6 +98,7 @@ AI-invocable slash commands live as `.prompt.md` files in `.github/prompts/`.
 ├── ai-update-index.prompt.md   ← /ai-update-index: Rebuild .ai/index.md after changes
 ├── ai-archive.prompt.md        ← /ai-archive: Archive a file following the convention
 ├── ai-new-module.prompt.md     ← /ai-new-module: Scaffold a new module and register it
+├── ai-env-check.prompt.md      ← /ai-env-check: Audit host-vs-container isolation; report only, never installs
 ├── ai-validate.prompt.md       ← /ai-validate: Run the AI-INSTRUCT drift validator
 └── ai-commit.prompt.md         ← /ai-commit: Refresh dates, validate, draft a Conventional Commits message, optionally push
 ```

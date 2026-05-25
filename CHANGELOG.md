@@ -14,6 +14,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
   - [`.continue/rules/project.md`](.continue/rules/project.md) for Continue.
   - [`.clinerules/project.md`](.clinerules/project.md) for Cline.
 - `AGENTS.md` tool compatibility section updated to list all five pre-configured agents (Copilot, Codex CLI, Aider, Cursor, Claude Code, Continue, Cline).
+- **`.ai/environment.md`** — new canonical rule file for host-vs-container isolation. Defines an environment-detection matrix (devcontainer, Docker, WSL, venv, conda, Kubernetes, etc.) and an Allowed vs. Restricted Operations matrix so AI agents never silently mutate the host (`npm install -g`, `pip install` without venv, `choco`/`brew`/`apt`/`winget`, etc.) while remaining free to install inside containers. Includes per-stack containment guidance for TypeScript/Node, Python, and Embedded C/C++.
+- **`/ai-env-check` slash command** — read-only audit prompt that detects the current shell's containment, inspects the workspace for containment markers, and recommends next steps without modifying anything. See [`.github/prompts/ai-env-check.prompt.md`](.github/prompts/ai-env-check.prompt.md).
+- `/ai-onboard` now includes Step 7b which invokes `/ai-env-check` and asks the user to pick a host-isolation strategy (project-local, docker-compose, devcontainer, or already-containerized).
+- `AGENTS.md`, `.github/copilot-instructions.md`, and `.ai/index.md` updated to register `.ai/environment.md` and `/ai-env-check`.
 
 ## [3.1.1] — 2026-05-25
 

@@ -39,6 +39,7 @@
 | `/ai-archive` | [`.github/prompts/ai-archive.prompt.md`](../.github/prompts/ai-archive.prompt.md) | Safely archive a file or directory using the convention |
 | `/ai-new-module` | [`.github/prompts/ai-new-module.prompt.md`](../.github/prompts/ai-new-module.prompt.md) | Scaffold a new module: `.ai/instruct.md` + `.dev-docs/index.md`, register it, rebuild index |
 | `/ai-validate` | [`.github/prompts/ai-validate.prompt.md`](../.github/prompts/ai-validate.prompt.md) | Run the AI-INSTRUCT drift validator and report findings (no edits) |
+| `/ai-env-check` | [`.github/prompts/ai-env-check.prompt.md`](../.github/prompts/ai-env-check.prompt.md) | Audit host-vs-container isolation state and recommend containment (no edits) |
 | `/ai-commit` | [`.github/prompts/ai-commit.prompt.md`](../.github/prompts/ai-commit.prompt.md) | Refresh `Last Updated` dates, validate, draft a Conventional Commits message, optionally push |
 | Custom Agents | [`.github/copilot-instructions.md`](../.github/copilot-instructions.md) | Custom agent definitions in `.github/agents/` |
 | Skills | [`.github/copilot-instructions.md`](../.github/copilot-instructions.md) | Domain knowledge skill packs in `.github/skills/` |
@@ -108,6 +109,18 @@
 | Credential Warehouse Pattern | [`.ai/credentials.md`](credentials.md) | Where credentials live by environment |
 | Rotating a Leaked Credential | [`.ai/credentials.md`](credentials.md) | Steps when a secret is accidentally committed |
 | AI Behavior Rules | [`.ai/credentials.md`](credentials.md) | How AI handles credentials — never print, always use env vars |
+
+### Environment & Host Isolation
+
+| Section | File | Description |
+|---------|------|-------------|
+| Why This Exists | [`.ai/environment.md`](environment.md) | The problem host-mutating AI causes for a template-driven workspace |
+| The Core Rule | [`.ai/environment.md`](environment.md) | Detect-then-act: containment first, host last; never silently mutate the host |
+| Environment Detection | [`.ai/environment.md`](environment.md) | How to tell whether you are on the host or inside a container/venv/WSL |
+| Allowed vs. Restricted Operations | [`.ai/environment.md`](environment.md) | Matrix of which commands are free, ask-first, or refuse-first by context |
+| Per-Stack Containment | [`.ai/environment.md`](environment.md) | TypeScript/Node, Python, C/C++ — preferred isolation per stack |
+| Devcontainers & Docker | [`.ai/environment.md`](environment.md) | When to recommend, what to scaffold |
+| AI Behavior Rules | [`.ai/environment.md`](environment.md) | What the AI must do, ask, or refuse for env-mutating commands |
 
 ### Root Project
 

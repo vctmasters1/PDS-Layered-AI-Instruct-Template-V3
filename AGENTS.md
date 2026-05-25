@@ -22,6 +22,7 @@ Start here, in this order:
 | Naming and file organization | [.ai/conventions.md](.ai/conventions.md) |
 | Archive / never-delete / never-reset-db | [.ai/maintenance.md](.ai/maintenance.md) |
 | Credentials, `.env`, `.gitignore` | [.ai/credentials.md](.ai/credentials.md) |
+| Host vs. container isolation (never silently mutate host) | [.ai/environment.md](.ai/environment.md) |
 | Full topic map | [.ai/index.md](.ai/index.md) |
 
 ## Tool compatibility

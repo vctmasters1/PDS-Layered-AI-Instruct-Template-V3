@@ -133,6 +133,19 @@ Ask which secrets/config the project will need at the root level. Add a stub lin
 
 Remind the user (link, do not restate): [.env File Convention](../../.ai/credentials.md#env-file-convention).
 
+### 7b. Host isolation strategy
+
+Invoke `/ai-env-check` (or perform its detection inline — see [.github/prompts/ai-env-check.prompt.md](ai-env-check.prompt.md)) to determine the current shell's containment and the workspace's per-stack markers.
+
+Then ask the user which isolation strategy the project should adopt — present only options that fit the stacks chosen in Step 4:
+
+- **Project-local only** (`node_modules`, `.venv`, out-of-tree `build/`) — minimum bar, suitable for single-stack projects.
+- **Add `docker-compose.yml`** for runtime services (database, broker, cache) so nothing runs directly on the host.
+- **Add `.devcontainer/devcontainer.json`** so VS Code / Codespaces opens the workspace in a container by default. Recommended for multi-language projects, embedded projects, or teams with >2 contributors.
+- **Already containerized elsewhere** (skip — the project is built and run inside a VM, remote dev box, or CI-only).
+
+Do not scaffold anything in this step. Record the user's choice and add a one-line note to [.ai/instruct.md](../../.ai/instruct.md) under a new `Host Isolation Strategy` row, plus a follow-up in the final summary (Step 11) telling the user the exact next command to run if they picked a scaffold option.
+
 ### 8. Git hooks
 
 Ask whether the user wants to install the pre-commit credential-leak hook now. If yes, instruct them to run:
