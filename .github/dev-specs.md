@@ -6,6 +6,30 @@
 
 ---
 
+## Example Filled Profile (reference only)
+
+> Keep this example as guidance. Fill the checklist template below with your own project values.
+
+**Project Name:** Example SaaS API + Dashboard  
+**Repo Shape:** Monorepo (API + web app + shared package)  
+**Team Size:** 4 developers
+
+| Category | Example Value |
+|---|---|
+| Development Platform | macOS 14 + WSL2 Ubuntu; VS Code |
+| Target Platform | Dockerized Node.js services on Linux cloud VMs |
+| Language & Runtime | TypeScript 5.6, Node.js 20 LTS |
+| Frontend | React + Vite + Tailwind CSS |
+| Backend | Fastify |
+| Database | PostgreSQL + Redis |
+| Package Manager | pnpm |
+| Infrastructure | Docker Compose locally, GitHub Actions CI, AWS hosting |
+| Testing | Vitest (unit), Playwright (E2E) |
+| Architecture Pattern | Modular monolith in a monorepo |
+| Notes | Prefer POSIX-style paths in docs/commands; avoid PowerShell-only snippets unless marked |
+
+---
+
 ## Contents
 
 | Section | What's here |
