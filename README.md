@@ -18,7 +18,7 @@
 ### Simple diagram for non-technical readers
 
 ```text
-Company coding rules (global)
+Project-wide rules (root .ai/instruct.md)
             │
             ▼
 Module rules (team/service specific)
@@ -142,7 +142,7 @@ What you get out of the box:
 Add your CI badge(s) here when enabled for your project, for example:
 
 ```md
-[![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
+[![CI](https://github.com/your-username/your-repo/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/your-repo/actions/workflows/ci.yml)
 ```
 
 - **Installer checks (`setup.sh` / `setup.ps1`)** install hooks, scaffold `.env`, and run the validator when `pwsh` is available.
@@ -185,7 +185,7 @@ Suggested alt text for future media:
 - `Alt: Terminal output showing AI-INSTRUCT validator checks passing`
 - `Alt: Side-by-side before/after AI edit behavior with layered instructions enabled`
 
-Planned timing: add media after the first public adopter walkthrough is sanitized for template-safe sharing.
+Planned timing: add media after real-world adoption examples are available and sanitized for template-safe sharing.
 
 ---
 

@@ -35,4 +35,3 @@ Thanks for helping improve this template.
 - **What changed**
 - **Why it changed**
 - **How validated** (commands run + outcomes)
-
