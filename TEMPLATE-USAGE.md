@@ -2,7 +2,7 @@
 
 This guide walks you through customizing the **Depth-Priority Hierarchical AI-INSTRUCT V3** template for a new project.
 
-> **Fastest path: run `/ai-onboard` in Copilot Chat.** It's an interactive wizard that walks through Steps 1–6 below, asks focused questions, detects/infer defaults where safe, fills every `[PLACEHOLDER]` it can (including `.github/dev-specs.md`), and asks you to confirm/edit inferred values. The manual steps below remain available if you prefer to drive it yourself or need to redo one section.
+> **Fastest path: run `/ai-onboard` in Copilot Chat.** It's an interactive wizard that walks through Steps 1–6 below, asks focused questions, detects/infers defaults where safe, fills every `[PLACEHOLDER]` it can (including `.github/dev-specs.md`), and asks you to confirm/edit inferred values. The manual steps below remain available if you prefer to drive it yourself or need to redo one section.
 >
 > **Faster than that: run the one-shot installer.** From a fresh clone, run `bash setup.sh` (macOS/Linux/WSL/Git Bash) or `pwsh setup.ps1` (Windows). It installs the git hooks, scaffolds `.env`, and runs the validator. Then drive `/ai-onboard` in Copilot Chat for the placeholder pass.
 

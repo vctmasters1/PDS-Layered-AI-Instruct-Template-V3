@@ -160,7 +160,7 @@ Add a new `## [0.1.0] — YYYY-MM-DD` (or `## [Unreleased]`) section to [CHANGEL
 Print a summary to the user:
 
 - **Filled in**: bulleted list of placeholders resolved, by file.
-- **Inferred and confirmed**: bulleted list of values auto-detected (especially in `.github/dev-specs.md`) and confirmed/edited by the user.
+- **Inferred and confirmed**: bulleted list of values auto-detected (especially in `.github/dev-specs.md`) and confirmed or edited by the user.
 - **Still needs your input**: any placeholders the user said "skip" on, or any TODOs left in the diagram/data-flow sections.
 - **Suggested next steps**: e.g., "run `bash .github/hooks/install-hooks.sh`", "archive `.example-module/` when ready", "fill in module rules in `[module]/.ai/instruct.md`".
 
